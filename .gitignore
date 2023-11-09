@@ -1,3 +1,4 @@
 *.o
 */msg_server_to_hack
 */login_server_to_hack
+*/client

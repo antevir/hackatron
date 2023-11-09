@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean msg_server_to_hack client
 
 all: msg_server_to_hack client
 

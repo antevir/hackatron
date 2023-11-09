@@ -1,8 +1,8 @@
-.PHONY: clean
+.PHONY: clean login_server_to_hack client
 
 all: login_server_to_hack client
 
-msg_server_to_hack: client
+login_server_to_hack: client
 	gcc -g -fno-stack-protector  login_server_to_hack.c -o login_server_to_hack
 
 client:

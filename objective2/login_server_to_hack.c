@@ -35,13 +35,13 @@ static void client_handler(int connfd)
     char password[16 + 1] = {0}; // Null terminated password
     char buff[16];               // TCP receive buffer
 
-    for (;;) {
-        // Write a random string to password
-        srand(time(NULL));
-        for (int i = 0; i < sizeof(password) - 1; i++) {
-            sprintf(password + i, "%x", rand() % 16);
-        }
+    // Write a random string to password
+    srand(time(NULL));
+    for (int i = 0; i < sizeof(password) - 1; i++) {
+        sprintf(password + i, "%x", rand() % 16);
+    }
 
+    for (;;) {
         // read the message from client and copy it in buffer
         ssize_t len = read(connfd, buff, 32);
         buff[len] = 0;
@@ -56,6 +56,7 @@ static void client_handler(int connfd)
         if (strcmp(buff, password) == 0) {
             char password_ok_str[] = "Login OK!\n";
             len = write(connfd, password_ok_str, strlen(password_ok_str));
+            printf("Login OK! You are done!\n");
         } else {
             char invalid_password_str[] = "Invalid password!\n";
             len = write(connfd, invalid_password_str, strlen(invalid_password_str));
