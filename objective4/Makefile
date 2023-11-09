@@ -1,4 +1,4 @@
-.PHONY: clean payload.bin
+.PHONY: clean payload.bin run_server
 
 PAYLOAD_OBJ:=payload/payload.o
 ARM_TOOLCHAIN_PATH:=/opt/gcc-arm-none-eabi-10.3-2021.10/bin
@@ -11,7 +11,7 @@ payload.bin:
 	${ARM_TOOLCHAIN_PATH}/arm-none-eabi-objcopy -O binary -j .text ${PAYLOAD_OBJ} payload.bin
 
 run_server:
-	qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -vga none -nic user,model=stellaris,hostfwd=tcp::4242-:4242 -pidfile qemu.pid -chardev stdio,id=con,mux=on -serial chardev:con -mon chardev=con,mode=readline -kernel ./build/zephyr/zephyr.elf
+	../zephyr_server/run.sh
 
 clean:
 	rm ${PAYLOAD_OBJ} payload.bin
