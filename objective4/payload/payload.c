@@ -5,7 +5,7 @@
 typedef void (*printf_t)(const char *, ...);
 typedef void (*sleep_t)(int, int);
 
-__attribute__((naked)) void main(void)
+__attribute__((naked,section(".main"))) void main(void)
 {
     // Decrease the stack pointer to make space for our program
     // If we don't do this our data will be overwritten when we call

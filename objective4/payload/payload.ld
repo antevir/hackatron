@@ -10,6 +10,7 @@ SECTIONS
 {
     .text :
     {
+        *(.main*)
         *(.text*)
         *(.rodata*)
     } > xip
