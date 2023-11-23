@@ -3,7 +3,7 @@
 all: login_server_to_hack client
 
 login_server_to_hack: client
-	gcc -g -fno-stack-protector  login_server_to_hack.c -o login_server_to_hack
+	gcc -g -fno-stack-protector -Wno-stringop-overflow login_server_to_hack.c -o login_server_to_hack
 
 client:
 	gcc -g ../client/client.c -o client

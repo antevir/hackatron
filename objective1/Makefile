@@ -3,7 +3,7 @@
 all: msg_server_to_hack client
 
 msg_server_to_hack: client
-	gcc -g -fno-stack-protector  msg_server_to_hack.c -o msg_server_to_hack
+	gcc -g -fno-stack-protector -Wno-stringop-overflow msg_server_to_hack.c -o msg_server_to_hack
 
 client:
 	gcc -g ../client/client.c -o client
